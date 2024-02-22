@@ -13,23 +13,15 @@ public class ZP_Bullets : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      rb.velocity = transform.right * bulletSpeed;  
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.UpArrow))
-        {
-            // rb.velocity = transform.up * bulletSpeed;
-            Debug.Log("Is firing at up.");
-        }
-        else if (Input.GetKey(KeyCode.LeftShift))
-        {
-            Debug.Log("Angled");
-        }  
+      
     }
-
+/*
      void OnTriggerEnter2D(Collider2D hitInfo)
     {
         Enemy_Behavior enemy = hitInfo.GetComponent<Enemy_Behavior>();
@@ -39,7 +31,7 @@ public class ZP_Bullets : MonoBehaviour
         }
         Destroy(gameObject);
     }
-
+*/
     void OnBecameInvisible()
     {
         Destroy(gameObject);
