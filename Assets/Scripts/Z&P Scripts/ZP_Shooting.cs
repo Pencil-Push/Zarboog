@@ -8,6 +8,8 @@ public class ZP_Shooting : MonoBehaviour
 
     public GameObject bulletPrefab;
 
+    public GameObject spriteObj;
+
     public float bulletSpeed = 20f;
 
     bool m_FacingRight;
@@ -17,6 +19,7 @@ public class ZP_Shooting : MonoBehaviour
     bool down;
 
     public Rigidbody2D rb;
+    private Animator zAnimator;
 
     // Update is called once per frame
      void Start()
@@ -27,13 +30,16 @@ public class ZP_Shooting : MonoBehaviour
         diagDOWN = false;
         up = false;
         down = false;
-        rb = GetComponent<Rigidbody2D>(); 
+
+        rb = GetComponent<Rigidbody2D>();
+        zAnimator = spriteObj.GetComponent<Animator>();
     }
     
     void Update()
     {   
         float horizontalInput = Input.GetAxis("Horizontal");
         Positioning();
+
         if (Input.GetButtonDown("Fire1"))
         {
             if (m_FacingRight)
@@ -57,6 +63,8 @@ public class ZP_Shooting : MonoBehaviour
                 else
                 {
                     Shoot(0f);
+                    zAnimator.ResetTrigger("Shoot");
+                    zAnimator.SetTrigger("Shoot");
                 }
             }
             if (!m_FacingRight)

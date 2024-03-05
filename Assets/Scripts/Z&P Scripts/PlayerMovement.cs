@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     // private Animator anim;
     private BoxCollider2D boxCollider;
+    public Animator zAnimator;
+
     bool m_FacingRight;
     bool diagUP;
     bool diagDOWN;
@@ -29,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
         // Grab references for rigidbody from object at start
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        zAnimator = GetComponent<Animator>();
+
         m_FacingRight = true;
         diagUP = false;
         diagDOWN = false;
@@ -38,14 +42,33 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Calls the Check for char position
         Positioning();
         
+        // movement
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
+        zAnimator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+
         // Jump Method; checking for Space key
-        if (Input.GetKey(KeyCode.C) && isGrounded())
+        if (Input.GetKey(KeyCode.X) && isGrounded())
+        {
             Jump();
+            zAnimator.ResetTrigger("Jump");
+            zAnimator.SetTrigger("Jump");
+        }
+        
+        if (isGrounded())
+        {
+            zAnimator.SetBool("isGrounded", true);
+        }
+        else
+        {
+            zAnimator.SetBool("isGrounded", false);
+        }
+            
+
 
         if (!m_FacingRight && horizontalInput > 0)
         {
