@@ -13,10 +13,13 @@ public class ZP_Shooting : MonoBehaviour
     public float bulletSpeed = 20f;
 
     bool m_FacingRight;
+    /*
     bool diagUP;
     bool diagDOWN;
     bool up;
     bool down;
+    bool NOOCH;
+    */
 
     public Rigidbody2D rb;
     private Animator zAnimator;
@@ -26,10 +29,13 @@ public class ZP_Shooting : MonoBehaviour
     {
         // Grab references for rigidbody from object at start
         m_FacingRight = true;
+
+        /*
         diagUP = false;
         diagDOWN = false;
         up = false;
         down = false;
+        */
 
         rb = GetComponent<Rigidbody2D>();
         zAnimator = spriteObj.GetComponent<Animator>();
@@ -38,59 +44,20 @@ public class ZP_Shooting : MonoBehaviour
     void Update()
     {   
         float horizontalInput = Input.GetAxis("Horizontal");
-        Positioning();
+        //Positioning();
 
         if (Input.GetButtonDown("Fire1"))
         {
             if (m_FacingRight)
             {
-                if (diagUP)
-                {
-                    Shoot(45f);
-                }
-                else if (diagDOWN)
-                {
-                    Shoot(-45f);
-                }
-                else if (up)
-                {
-                    Shoot(90f);
-                }
-                else if (down)
-                {
-                    Shoot(-90f);
-                }
-                else
-                {
-                    Shoot(0f);
-                    zAnimator.ResetTrigger("Shoot");
-                    zAnimator.SetTrigger("Shoot");
-                }
+                Shoot(0f);
             }
             if (!m_FacingRight)
             {
-               if (diagUP)
-                {
-                    Shoot(135f);
-                }
-                else if (diagDOWN)
-                {
-                    Shoot(-135f);
-                }
-                else if (up)
-                {
-                    Shoot(90f);
-                }
-                else if (down)
-                {
-                    Shoot(-90f);
-                }
-                else
-                {
-                    Shoot(180f);
-                } 
+                Shoot(180f);
             }
-        } 
+        }
+         
         if (!m_FacingRight && horizontalInput > 0)
         {
            Flip();
@@ -100,7 +67,7 @@ public class ZP_Shooting : MonoBehaviour
             Flip();
         }
     }
-
+    /*
     void Positioning()
     {
         if (Input.GetKey(KeyCode.UpArrow) && (Input.GetKey(KeyCode.LeftArrow) ^ (Input.GetKey(KeyCode.RightArrow))))
@@ -127,6 +94,7 @@ public class ZP_Shooting : MonoBehaviour
           down = false;
         }
     }
+    */
 
     private void Flip()
     {
@@ -135,6 +103,8 @@ public class ZP_Shooting : MonoBehaviour
        m_FacingRight = !m_FacingRight;
        transform.Rotate(0f, 180f, 0f);
     }
+
+    
     
     void Shoot(float ang)
     {

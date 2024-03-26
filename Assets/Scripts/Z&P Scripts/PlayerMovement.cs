@@ -12,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     public LayerMask groundLayer;
     Rigidbody2D rb;
-    // private Animator anim;
     private BoxCollider2D boxCollider;
     public Animator zAnimator;
 
@@ -21,7 +20,6 @@ public class PlayerMovement : MonoBehaviour
     bool diagDOWN;
     bool up;
     bool down;
-    // bool NOOCH
 
     Vector2 movement;
     
@@ -34,24 +32,27 @@ public class PlayerMovement : MonoBehaviour
         zAnimator = GetComponent<Animator>();
 
         m_FacingRight = true;
+        /*
         diagUP = false;
         diagDOWN = false;
         up = false;
         down = false;
+        */
     }
 
     void Update()
     {
         // Calls the Check for char position
-        Positioning();
+        // Positioning();
         
         // movement
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
         zAnimator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+        
 
-        // Jump Method; checking for Space key
+        // Jump Method; checking for X key
         if (Input.GetKey(KeyCode.X) && isGrounded())
         {
             Jump();
@@ -68,8 +69,6 @@ public class PlayerMovement : MonoBehaviour
             zAnimator.SetBool("isGrounded", false);
         }
             
-
-
         if (!m_FacingRight && horizontalInput > 0)
         {
            Flip();
@@ -79,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
     }
-
+    /*
     void Positioning()
     {
         if (Input.GetKey(KeyCode.UpArrow) && (Input.GetKey(KeyCode.LeftArrow) ^ (Input.GetKey(KeyCode.RightArrow))))
@@ -106,6 +105,7 @@ public class PlayerMovement : MonoBehaviour
           down = false;
         }
     }
+    */
 
     private void Flip()
     {
@@ -116,7 +116,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     // Jump Method; RaycastHit2D & BoxCollider2D
-    void Jump()
+    private void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, speed);
     }
@@ -126,9 +126,7 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
-
-    // private bool onWall() "Wall Jump"
-
-    // Checks the player for when they are able to attack
     
+    //
+
 }
