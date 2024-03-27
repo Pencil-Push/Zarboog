@@ -5,33 +5,43 @@ using UnityEngine;
 public class Enemy_Behavior : MonoBehaviour
 {
     [Header ("Attack Parameters")]
-    private Enemy_Patrol enemyPatrol;
+    
 
     [Header ("Collider Parameters")]
     public LayerMask groundLayer;
     private BoxCollider2D boxCollider;
 
     [Header ("Player Layer")]
-    //public int lifeTotal = 20;
-    [SerializeField] float enemySpeed;
+    //[SerializeField] private int lifeTotal = 20;
+    [SerializeField] private int enemySpeed = 20;
     Rigidbody2D sb;
+    SpriteRenderer sparSprite;
+    private bool facingRight = true;
 
-    [Header ("Patrol")]
-    [SerializeField] Transform[] Positions;
-    Transform sparPos;
-    int sparPosIndex;
+    //[Header ("Patrol")]
+    
 
     // Start is called before the first frame update
     void Start()
     {
         sb = GetComponent<Rigidbody2D>();
-        sparPos = Positions[0];  
+        sparSprite = GetComponent<SpriteRenderer>();  
     }
 
     // Update is called once per frame
     void Update()
     {
-        //SparduPatrol();   
+        FacingRight();
+        sb.velocity = transform.right * enemySpeed;
+
+        if (facingRight)
+        {
+            sparSprite.flipX = false;
+        }
+        else
+        {
+            sparSprite.flipX = true;
+        } 
     }
 
     private bool isGrounded()
@@ -39,22 +49,16 @@ public class Enemy_Behavior : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
-/*
-    void SparduPatrol()
+
+    private void FacingRight()
     {
-        if (transform.position == sparPos.position)
+        if (Input.GetAxisRaw("Horizontal") > 0)
         {
-            sparPosIndex++;
-            if (sparPosIndex >= Positions.Length)
-            {
-                sparPosIndex = 0;
-            }
-            sparPos = Positions[sparPosIndex];
+            facingRight = true;
         }
-        else
+        else if (Input.GetAxisRaw("Horizontal") < 0)
         {
-            transform.position = Vector2.MoveTowards(sparPos, enemySpeed * Time.deltaTime);
+            facingRight = false;
         }
     }
-    */
 }
