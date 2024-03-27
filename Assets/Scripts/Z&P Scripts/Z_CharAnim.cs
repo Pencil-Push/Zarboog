@@ -21,10 +21,8 @@ public class Z_CharAnim : MonoBehaviour
     
     void Update()
     { 
-        
-
         /*
-        if (Input.GetButtonDown("Fire1") && )
+        if (Input.GetButtonDown("Fire1") && Input.GetKeyDown(KeyCode.X))
         {
             zAnimator.SetBool("jumpShoot", true);
         }

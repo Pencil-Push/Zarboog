@@ -53,7 +53,7 @@ public class PlayerMovement : MonoBehaviour
         
 
         // Jump Method; checking for X key
-        if (Input.GetKey(KeyCode.X) && isGrounded())
+        if (Input.GetKeyDown(KeyCode.X) && isGrounded())
         {
             Jump();
             zAnimator.ResetTrigger("Jump");
