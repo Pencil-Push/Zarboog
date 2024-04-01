@@ -9,20 +9,29 @@ public class PlayerMovement : MonoBehaviour
     // Will not activate any collisions. So you want to use Rigidbody.velocity for
     // physics based purposes.
     
-    [Header] 
-    public float speed;
+    [Header ("Player Parameters")] 
+    [SerializeField] private float speed;
     public LayerMask groundLayer;
+    private bool facingRight = true;
+    Vector2 movement;
+
+    [Header ("Player Components")]
     Rigidbody2D rb;
     private BoxCollider2D boxCollider;
     public Animator zAnimator;
+    private SpriteRenderer zSprite;
 
-    private bool m_FacingRight = true;
-    bool diagUP;
-    bool diagDOWN;
-    bool up;
-    bool down;
+    [Header ("Wall Shit")]
+    private bool isTouchingFront;
+    [SerializeField] private Transform wallCheck;
+    private bool wallSliding;
+    [SerializeField] private float wallSlideSpeed;
+    private bool wallJump;
+    [SerializeField] private float xWallForce;
+    [SerializeField] private float yWallForce;
+    [SerializeField] private float wallJumpTime;
 
-    Vector2 movement;
+    //[Header ("Dash Shit")]
     
 
     void Start()
@@ -31,17 +40,28 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         zAnimator = GetComponent<Animator>();
+        zSprite = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
         // Calls the Check for char position
-        
+        FacingRight();
+
         // movement
         float horizontalInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
 
         zAnimator.SetFloat("Speed", Mathf.Abs(horizontalInput));
+
+        if (facingRight)
+        {
+            wallCheck.transform.position = transform.position + new Vector3(.48f, 0, 0);
+        }
+        else
+        {
+            wallCheck.transform.position = transform.position + new Vector3(-.48f, 0, 0);
+        }
         
 
         // Jump Method; checking for X key
@@ -52,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
             zAnimator.SetTrigger("Jump");
         }
         
+        // grounded anim param
         if (isGrounded())
         {
             zAnimator.SetBool("isGrounded", true);
@@ -60,17 +81,61 @@ public class PlayerMovement : MonoBehaviour
         {
             zAnimator.SetBool("isGrounded", false);
         }
-            
+
+        // Wall jump shit
+        isTouchingFront = Physics2D.OverlapCircle(wallCheck.position, 0.5f, groundLayer);
+
+        if (isTouchingFront == true && !isGrounded() && horizontalInput != 0)
+        {
+            wallSliding = true;
+        }
+        else
+        {
+            wallSliding = false;
+        }
+
+        if (wallSliding)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, Mathf.Clamp(rb.velocity.y, -wallSlideSpeed, float.MaxValue));
+        }
+
+        if (Input.GetKeyDown(KeyCode.X) && wallSliding == true)
+        {
+            wallJump = true;
+            Invoke("SetWallJumpFalse", wallJumpTime);
+        }
+
+        if (wallJump == true)
+        {
+            rb.velocity = new Vector2(xWallForce * -horizontalInput, yWallForce);
+        }
+
+        if (facingRight)
+        {
+            zSprite.flipX = false;
+        }
+        else
+        {
+            zSprite.flipX = true;
+        }
         
     }
     
-
-    private void Flip()
+    void SetWallJumpFalse()
     {
-        // Switch the way the player is labelled as facing.
-       
-       m_FacingRight = !m_FacingRight;
-       transform.Rotate(0f, 180f, 0f);
+        wallJump = false;
+    }
+
+    private void FacingRight()
+    {
+        if (Input.GetAxisRaw("Horizontal") > 0)
+        {
+            facingRight = true;
+        }
+        else if (Input.GetAxisRaw("Horizontal") < 0)
+        {
+            facingRight = false;
+        }
     }
 
     // Jump Method; RaycastHit2D & BoxCollider2D
