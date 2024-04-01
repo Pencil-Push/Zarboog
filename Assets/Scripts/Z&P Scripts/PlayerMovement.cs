@@ -9,13 +9,14 @@ public class PlayerMovement : MonoBehaviour
     // Will not activate any collisions. So you want to use Rigidbody.velocity for
     // physics based purposes.
     
+    [Header] 
     public float speed;
     public LayerMask groundLayer;
     Rigidbody2D rb;
     private BoxCollider2D boxCollider;
     public Animator zAnimator;
 
-    bool m_FacingRight;
+    private bool m_FacingRight = true;
     bool diagUP;
     bool diagDOWN;
     bool up;
@@ -30,20 +31,11 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
         zAnimator = GetComponent<Animator>();
-
-        m_FacingRight = true;
-        /*
-        diagUP = false;
-        diagDOWN = false;
-        up = false;
-        down = false;
-        */
     }
 
     void Update()
     {
         // Calls the Check for char position
-        // Positioning();
         
         // movement
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -69,43 +61,9 @@ public class PlayerMovement : MonoBehaviour
             zAnimator.SetBool("isGrounded", false);
         }
             
-        if (!m_FacingRight && horizontalInput > 0)
-        {
-           Flip();
-        }
-        else if (m_FacingRight && horizontalInput < 0)
-        {
-            Flip();
-        }
+        
     }
-    /*
-    void Positioning()
-    {
-        if (Input.GetKey(KeyCode.UpArrow) && (Input.GetKey(KeyCode.LeftArrow) ^ (Input.GetKey(KeyCode.RightArrow))))
-        {
-            diagUP = true;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow) && (Input.GetKey(KeyCode.LeftArrow) ^ (Input.GetKey(KeyCode.RightArrow))))
-        {
-            diagDOWN = true;
-        }
-        else if (Input.GetKey(KeyCode.UpArrow))
-        {
-            up = true;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            down = true;
-        }
-        else
-        {
-          diagUP = false;
-          diagDOWN = false;
-          up = false;
-          down = false;
-        }
-    }
-    */
+    
 
     private void Flip()
     {
