@@ -144,6 +144,9 @@ MonoBehaviour:
   xWallForce: 15
   yWallForce: 15
   wallJumpTime: 0.05
+  dashPower: 5
+  dashTime: 0.2
+  dashCooldown: 1
 --- !u!50 &8427199712312711905
 Rigidbody2D:
   serializedVersion: 4

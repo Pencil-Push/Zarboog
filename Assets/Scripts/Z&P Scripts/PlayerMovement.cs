@@ -21,7 +21,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator zAnimator;
     private SpriteRenderer zSprite;
 
-    [Header ("Wall Shit")]
+    [Header ("Wall Parameters")]
     private bool isTouchingFront;
     [SerializeField] private Transform wallCheck;
     private bool wallSliding;
@@ -31,10 +31,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float yWallForce;
     [SerializeField] private float wallJumpTime;
 
-    [Header ("Dash Shit")]
+    [Header ("Dash Parameters")]
     private bool canDash = true;
     private bool isDashing;
-    [SerializeField] private float dashPower = 30f;
+    [SerializeField] private float dashPower;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float dashCooldown = 1f;
     
@@ -52,6 +52,11 @@ public class PlayerMovement : MonoBehaviour
     {
         // Calls the Check for char position
         FacingRight();
+
+        if (isDashing)
+        {
+            return;
+        }
 
         // movement
         float horizontalInput = Input.GetAxis("Horizontal");
@@ -123,7 +128,25 @@ public class PlayerMovement : MonoBehaviour
         {
             zSprite.flipX = true;
         }
+
+        // Dash Shit
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && isGrounded())
+        {
+            StartCoroutine(Dash());
+        }
+        else
+        {
+            StopCoroutine(Dash());
+        }
         
+    }
+
+    private void FixedUpdate()
+    {
+        if (isDashing)
+        {
+            return;
+        }
     }
     
     void SetWallJumpFalse()
@@ -148,15 +171,21 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, speed);
     }
-    /*
+    
     // Dash Couroutine
     private IEnumerator Dash()
     {
         canDash = false;
         isDashing = true;
-        float originalGravity = rb
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.velocity = new Vector2(rb.velocity.x * dashPower, 0f);
+        yield return new WaitForSeconds(dashTime);
+        isDashing = false;
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
     }
-    */
+    
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
