@@ -31,7 +31,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float yWallForce;
     [SerializeField] private float wallJumpTime;
 
-    //[Header ("Dash Shit")]
+    [Header ("Dash Shit")]
+    private bool canDash = true;
+    private bool isDashing;
+    [SerializeField] private float dashPower = 30f;
+    [SerializeField] private float dashTime = 0.2f;
+    [SerializeField] private float dashCooldown = 1f;
     
 
     void Start()
@@ -143,7 +148,15 @@ public class PlayerMovement : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, speed);
     }
-
+    /*
+    // Dash Couroutine
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = rb
+    }
+    */
     private bool isGrounded()
     {
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
