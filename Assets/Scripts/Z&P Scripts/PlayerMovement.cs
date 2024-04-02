@@ -98,10 +98,12 @@ public class PlayerMovement : MonoBehaviour
         if (isTouchingFront == true && !isGrounded() && horizontalInput != 0)
         {
             wallSliding = true;
+            zAnimator.SetBool("isWalled", true);
         }
         else
         {
             wallSliding = false;
+            zAnimator.SetBool("isWalled", false);
         }
 
         if (wallSliding)
@@ -133,6 +135,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && isGrounded())
         {
             StartCoroutine(Dash());
+            zAnimator.SetTrigger("Dash");
         }
         else
         {
@@ -181,6 +184,7 @@ public class PlayerMovement : MonoBehaviour
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(rb.velocity.x * dashPower, 0f);
         yield return new WaitForSeconds(dashTime);
+        rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashCooldown);
         canDash = true;
