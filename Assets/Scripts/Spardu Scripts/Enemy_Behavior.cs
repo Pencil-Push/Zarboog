@@ -18,14 +18,21 @@ public class Enemy_Behavior : MonoBehaviour
     SpriteRenderer sparSprite;
     private bool facingRight = true;
 
-    //[Header ("Patrol")]
+    [Header ("Patrol")]
+    private GameObject wayPoint01;
+    private GameObject wayPoint02;
     
 
     // Start is called before the first frame update
     void Start()
     {
+        // Grab components
         sb = GetComponent<Rigidbody2D>();
-        sparSprite = GetComponent<SpriteRenderer>();  
+        sparSprite = GetComponent<SpriteRenderer>();
+
+        // Waypoint Start
+        wayPoint01 = GameObject.FindWithTag("wayPoint01");
+        wayPoint02 = GameObject.FindWithTag("wayPoint02");
     }
 
     // Update is called once per frame
@@ -61,4 +68,6 @@ public class Enemy_Behavior : MonoBehaviour
             facingRight = false;
         }
     }
+
+    //private GameObject FindClosestWP (GameObject[] wayPoint)
 }
