@@ -4,38 +4,22 @@ using UnityEngine;
 
 public class ZP_Shooting : MonoBehaviour
 {
+    [Header ("Emitter Parameters")]
     public Transform firePoint;
-
     public GameObject bulletPrefab;
-
     public GameObject spriteObj;
+    [SerializeField] private float bulletSpeed = 20f;
+    private bool m_FacingRight;
 
-    public float bulletSpeed = 20f;
-
-    bool m_FacingRight;
-    /*
-    bool diagUP;
-    bool diagDOWN;
-    bool up;
-    bool down;
-    bool NOOCH;
-    */
-
-    public Rigidbody2D rb;
+    [Header ("Emitter Components")]
+    private Rigidbody2D rb;
     private Animator zAnimator;
-
+    
     // Update is called once per frame
      void Start()
     {
         // Grab references for rigidbody from object at start
         m_FacingRight = true;
-
-        /*
-        diagUP = false;
-        diagDOWN = false;
-        up = false;
-        down = false;
-        */
 
         rb = GetComponent<Rigidbody2D>();
         zAnimator = spriteObj.GetComponent<Animator>();
@@ -60,41 +44,13 @@ public class ZP_Shooting : MonoBehaviour
          
         if (!m_FacingRight && horizontalInput > 0)
         {
-           Flip();
+            Flip();
         }
         else if (m_FacingRight && horizontalInput < 0)
         {
             Flip();
         }
     }
-    /*
-    void Positioning()
-    {
-        if (Input.GetKey(KeyCode.UpArrow) && (Input.GetKey(KeyCode.LeftArrow) ^ (Input.GetKey(KeyCode.RightArrow))))
-        {
-            diagUP = true;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow) && (Input.GetKey(KeyCode.LeftArrow) ^ (Input.GetKey(KeyCode.RightArrow))))
-        {
-            diagDOWN = true;
-        }
-        else if (Input.GetKey(KeyCode.UpArrow))
-        {
-            up = true;
-        }
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            down = true;
-        }
-        else
-        {
-          diagUP = false;
-          diagDOWN = false;
-          up = false;
-          down = false;
-        }
-    }
-    */
 
     private void Flip()
     {
@@ -104,8 +60,6 @@ public class ZP_Shooting : MonoBehaviour
        transform.Rotate(0f, 180f, 0f);
     }
 
-    
-    
     void Shoot(float ang)
     {
         // shooting logic firePoint.rotation,
