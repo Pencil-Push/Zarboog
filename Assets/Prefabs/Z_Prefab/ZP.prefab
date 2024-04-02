@@ -138,6 +138,7 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  firePoint: {fileID: 8427199713409135070}
   zAnimator: {fileID: 8427199712312711919}
   wallCheck: {fileID: 4080521139318635272}
   wallSlideSpeed: 5
@@ -278,7 +279,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8869580326173842920, guid: ee438cc23028db944959bf8a568fe665, type: 3}
   spriteObj: {fileID: 8427199712312711910}
   bulletSpeed: 20
-  rb: {fileID: 8427199712312711905}
 --- !u!212 &8427199713409135067
 SpriteRenderer:
   m_ObjectHideFlags: 0

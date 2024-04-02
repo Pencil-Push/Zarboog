@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     public LayerMask groundLayer;
     private bool facingRight = true;
+    [SerializeField] private Transform firePoint;
     Vector2 movement;
 
     [Header ("Player Components")]
@@ -64,6 +65,7 @@ public class PlayerMovement : MonoBehaviour
 
         zAnimator.SetFloat("Speed", Mathf.Abs(horizontalInput));
 
+        // Flip Wall Check child object
         if (facingRight)
         {
             wallCheck.transform.position = transform.position + new Vector3(.48f, 0, 0);
@@ -72,8 +74,16 @@ public class PlayerMovement : MonoBehaviour
         {
             wallCheck.transform.position = transform.position + new Vector3(-.48f, 0, 0);
         }
-        
 
+        if (facingRight)
+        {
+            firePoint.transform.position = transform.position + new Vector3(1.4f, 0, 0);
+        }
+        else
+        {
+            firePoint.transform.position = transform.position + new Vector3(-1.4f, 0, 0);
+        }
+        
         // Jump Method; checking for X key
         if (Input.GetKeyDown(KeyCode.X) && isGrounded())
         {
@@ -140,8 +150,7 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             StopCoroutine(Dash());
-        }
-        
+        }   
     }
 
     private void FixedUpdate()
