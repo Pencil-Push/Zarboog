@@ -42,10 +42,11 @@ GameObject:
   - component: {fileID: 8427199712312711906}
   - component: {fileID: 8427199712312711907}
   - component: {fileID: 8427199712312711909}
+  - component: {fileID: 8525128008850918533}
+  - component: {fileID: 6563487100805519316}
   - component: {fileID: 8427199712312711905}
   - component: {fileID: 8427199712312711904}
   - component: {fileID: 8427199712312711919}
-  - component: {fileID: 8525128008850918533}
   m_Layer: 0
   m_Name: ZP
   m_TagString: Player
@@ -148,6 +149,32 @@ MonoBehaviour:
   dashPower: 5
   dashTime: 0.2
   dashCooldown: 1
+--- !u!114 &8525128008850918533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427199712312711910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d63f6ae25a9e6c744b2ae28227d578a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteObj: {fileID: 8427199712312711910}
+  rb: {fileID: 8427199712312711905}
+--- !u!114 &6563487100805519316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8427199712312711910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fcd9485b6418374dbc489bfaf896a16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!50 &8427199712312711905
 Rigidbody2D:
   serializedVersion: 4
@@ -216,20 +243,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8525128008850918533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8427199712312711910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d63f6ae25a9e6c744b2ae28227d578a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteObj: {fileID: 8427199712312711910}
-  rb: {fileID: 8427199712312711905}
 --- !u!1 &8427199713409135071
 GameObject:
   m_ObjectHideFlags: 0
