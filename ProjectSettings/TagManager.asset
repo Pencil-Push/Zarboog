@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - wayPoint01
   - wayPoint02
+  - SP01
   layers:
   - Default
   - TransparentFX
