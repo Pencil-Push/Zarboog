@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy_Controller : MonoBehaviour
 {
     [Header ("Spawn Parameters")]
-    private float waitTimeBeforeSpawn = 5f;
+    //private float waitTimeBeforeSpawn = 5f;
     private float spawnWaitTime;
     private GameObject spawnPoint;
     public GameObject SpawnPoint01;
