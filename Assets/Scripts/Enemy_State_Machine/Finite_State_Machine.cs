@@ -13,5 +13,13 @@ public class Finite_State_Machine
     public void Initialize(State startingState)
     {
         currentState = startingState;
+        currentState.Enter();
+    }
+
+    public void ChangeState(State newState)
+    {
+        currentState.Exit();
+        currentState = newState;
+        currentState.Enter();
     }
 }

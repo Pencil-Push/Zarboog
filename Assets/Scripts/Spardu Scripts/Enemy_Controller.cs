@@ -6,7 +6,7 @@ public class Enemy_Controller : MonoBehaviour
 {
     [Header ("Spawn Parameters")]
     //private float waitTimeBeforeSpawn = 5f;
-    private bool insideSpawn = false;
+    //private bool insideSpawn = false;
     private GameObject spawnPoint;
     public GameObject SpawnPoint01;
     //public GameObject SpawnPoint02;
