@@ -9,27 +9,65 @@ public class Enemy_Patrol : MonoBehaviour
     [SerializeField] private Transform rightEdge;
     [SerializeField] private Transform enemy;
 
-    [Header ("Enemy")]
-    //[SerializeField] private Rigidbody2D sb;
+    [Header ("Enemy Components")]
+    [SerializeField] private Animator sAnim;
 
     [Header ("Movement Parameters")]
     [SerializeField] private float speed;
+    private Vector3 initScale;
+    private bool movingLeft;
+    [SerializeField] private float idleDuration;
+    private float idleTimer;
 
-    void start()
+    void Start()
     {
-        //sb = GetComponent<Rigidbody2D>();
+        //sAnim = GetComponent<Animator>();
+        initScale = enemy.localScale;
     }
 
-    void update()
+    private void OnDisable()
     {
-        MoveInDirection(1);
+        sAnim.SetBool("isWalking", false);
+    }
+
+    void Update()
+    {
+        if(movingLeft)
+        {
+            if(enemy.position.x >= leftEdge.position.x)
+                MoveInDirection(-1);
+            else
+                DirectionChange();
+        }
+        else
+        {
+            if(enemy.position.x <= rightEdge.position.x)
+                MoveInDirection(1);
+            else
+                DirectionChange();
+        }
+    }
+
+    private void DirectionChange()
+    {
+        sAnim.SetBool("isWalking", false);
+
+        idleTimer += Time.deltaTime;
+
+        if(idleTimer > idleDuration)
+            movingLeft = !movingLeft;
     }
 
     private void MoveInDirection(int _direction)
     {
+        idleTimer = 0;
+
+        sAnim.SetBool("isWalking", true);
+
         // Make enemy face direction
+        enemy.localScale = new Vector3(Mathf.Abs(initScale.x) * _direction, initScale.y, initScale.z);
 
         // Move in that direction
-        enemy.position = new Vector2(enemy.position.x + Time.deltaTime * _direction * speed, enemy.position.y);
+        enemy.position = new Vector3(enemy.position.x + Time.deltaTime * _direction * speed, enemy.position.y, enemy.position.z);
     }
 }
