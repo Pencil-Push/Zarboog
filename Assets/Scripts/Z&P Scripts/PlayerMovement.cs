@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private BoxCollider2D boxCollider;
     public Animator zAnimator;
     private SpriteRenderer zSprite;
+    [SerializeField] private TrailRenderer zTrail;
 
     [Header ("Wall Parameters")]
     private bool isTouchingFront;
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         zAnimator = GetComponent<Animator>();
         zSprite = GetComponent<SpriteRenderer>();
+        zTrail = GetComponent<TrailRenderer>();
     }
 
     void Update()
@@ -192,7 +194,9 @@ public class PlayerMovement : MonoBehaviour
         float originalGravity = rb.gravityScale;
         rb.gravityScale = 0f;
         rb.velocity = new Vector2(rb.velocity.x * dashPower, 0f);
+        zTrail.emitting = true;
         yield return new WaitForSeconds(dashTime);
+        zTrail.emitting = false;
         rb.gravityScale = originalGravity;
         isDashing = false;
         yield return new WaitForSeconds(dashCooldown);

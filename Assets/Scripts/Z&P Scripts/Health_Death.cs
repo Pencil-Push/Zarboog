@@ -1,22 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
+using UnityEngine.UI;
 
 public class Health_Death : MonoBehaviour
 {
     [Header ("Health Parameter")]
     [SerializeField] private float startingHealth;
     public float currHealth { get; private set; }
+    private bool dead;
+
+    [Header ("iFrames")]
+    [SerializeField] private float invulDur;
+    [SerializeField] private int flashCount;
+    private SpriteRenderer zSprite;
 
     [Header ("Lives Parameter")]
     [SerializeField] private int maxLives;
     [SerializeField] private int currLives;
 
+    [Header ("Player Components")]
+    private Animator zAnim;
+
     private void Start()
     {
+        zAnim = GetComponent<Animator>();
+        zSprite = GetComponent<SpriteRenderer>();
         currHealth = startingHealth;
         currLives = maxLives;
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            TakeDamage(3);
+        }
     }
 
     public void TakeDamage(float _damage)
@@ -25,11 +44,39 @@ public class Health_Death : MonoBehaviour
         
         if (currHealth > 0)
         {
-            //player hurt anim
+            zAnim.SetTrigger("Hurt");
+            StartCoroutine(Invul());
         }
         else
         {
-            //player death anim
+            if(!dead)
+            {
+                zAnim.SetTrigger("Die");
+
+                if(GetComponent<PlayerMovement>() != null)
+                    GetComponent<PlayerMovement>().enabled = false;
+
+                dead = true;
+            }
         }
+    }
+    /*
+    public void AddHealth(float _value)
+    {
+        currHealth = Mathf.Clamp(currHealth + _value, 0, startingHealth);
+    }
+    */
+
+    private IEnumerator Invul()
+    {
+        Physics2D.IgnoreLayerCollision(7, 8, true);
+        for(int i = 0; i < flashCount; i++)
+        {
+            zSprite.color = new Color(1,0,0, 0.5f);
+            yield return new WaitForSeconds(invulDur / (flashCount * 2));
+            zSprite.color = Color.white;
+            yield return new WaitForSeconds(invulDur / (flashCount * 2));
+        }
+        Physics2D.IgnoreLayerCollision(7, 8, false);
     }
 }

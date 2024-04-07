@@ -12,7 +12,6 @@ public class Enemy_Behavior : MonoBehaviour
     //private float attackTimer;
     private float cooldownTimer = Mathf.Infinity;
 
-    // Alt way to shoot projectiles
     [Header ("Ranged Attack")]
     [SerializeField] private Transform emitter;
     [SerializeField] private GameObject sProjectile;
@@ -23,12 +22,9 @@ public class Enemy_Behavior : MonoBehaviour
     [SerializeField] private BoxCollider2D boxCollider;
 
     [Header ("Player Layer")]
-    //[SerializeField] private int lifeTotal = 20;
-    //[SerializeField] private int enemySpeed = 20;
     private Rigidbody2D sb;
     private Animator sAnim;
     private SpriteRenderer sparSprite;
-    //private Health_Death playerHealth;
     private Enemy_Patrol enemyPatrol;
     
     // Start is called before the first frame update

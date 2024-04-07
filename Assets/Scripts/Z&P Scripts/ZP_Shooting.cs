@@ -5,11 +5,10 @@ using UnityEngine;
 public class ZP_Shooting : MonoBehaviour
 {
     [Header ("Emitter Parameters")]
-    public Transform firePoint;
-    public GameObject bulletPrefab;
-    public GameObject spriteObj;
-    [SerializeField] private float bulletSpeed = 20f;
-    private bool zHit;
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject spriteObj;
+    [SerializeField] private float bulletSpeed;
     private bool m_FacingRight;
 
     [Header ("Emitter Components")]
@@ -31,9 +30,6 @@ public class ZP_Shooting : MonoBehaviour
     void Update()
     {   
         float horizontalInput = Input.GetAxis("Horizontal");
-        //Positioning();
-
-        if(zHit) return;
 
         if (Input.GetButtonDown("Fire1"))
         {
@@ -57,14 +53,6 @@ public class ZP_Shooting : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        zHit = true;
-        zCollider.enabled = false;
-
-        if(collision.tag == "Enemy")
-            collision.GetComponent<Health_Death>().TakeDamage(2);
-    }
     private void Flip()
     {
         // Switch the way the player is labelled as facing.

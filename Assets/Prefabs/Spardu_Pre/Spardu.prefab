@@ -44,8 +44,8 @@ GameObject:
   - component: {fileID: 8204497132642010219}
   - component: {fileID: 8204497132642010218}
   - component: {fileID: 8204497132642010214}
-  - component: {fileID: 4496651972816544360}
   - component: {fileID: 6638220746696478070}
+  - component: {fileID: 7408771279621656495}
   m_Layer: 0
   m_Name: Spardu
   m_TagString: Enemy
@@ -181,8 +181,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCooldown: 1
-  range: 8.76
-  colliderDistance: 0
+  range: 7.07
+  colliderDistance: 0.74
   damage: 2
   emitter: {fileID: 4484728837264985002}
   sProjectile: {fileID: 7873300723353687422, guid: 100d416835b0b4c4a89c424a6d0f50d4, type: 3}
@@ -193,19 +193,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   boxCollider: {fileID: 8204497132642010218}
---- !u!114 &4496651972816544360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8204497132642010217}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fcd9485b6418374dbc489bfaf896a16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 15
 --- !u!95 &6638220746696478070
 Animator:
   serializedVersion: 5
@@ -227,3 +214,16 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7408771279621656495
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8204497132642010217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d74368898b257842b5d13527d407e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 15
