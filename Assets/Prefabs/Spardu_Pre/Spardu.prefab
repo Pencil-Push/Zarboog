@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5108908041402598641}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.82, y: 0, z: 0}
+  m_LocalPosition: {x: 1.14, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -180,13 +180,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5828c474f370f1458307f3d23cac04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 2
-  range: 4.79
-  colliderDistance: 0.84
+  attackCooldown: 1
+  range: 8.76
+  colliderDistance: 0
   damage: 2
-  bulletPrefab: {fileID: 7873300723353687422, guid: 100d416835b0b4c4a89c424a6d0f50d4, type: 3}
-  waitTimeBeforeShot: 5
-  bulletSpeed: 10
+  emitter: {fileID: 4484728837264985002}
+  sProjectile: {fileID: 7873300723353687422, guid: 100d416835b0b4c4a89c424a6d0f50d4, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64

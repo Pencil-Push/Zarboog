@@ -19,11 +19,11 @@ public class Health_Death : MonoBehaviour
         
         if (currHealth > 0)
         {
-
+            //player hurt
         }
         else
         {
-
+            //player death
         }
     }
 }

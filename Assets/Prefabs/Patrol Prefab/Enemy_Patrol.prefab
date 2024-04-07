@@ -110,7 +110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftEdge: {fileID: 4338158712408608123}
   rightEdge: {fileID: 4338158711705713038}
-  enemy: {fileID: 0}
-  sAnim: {fileID: 0}
+  enemy: {fileID: 8204497132642010213, guid: 7634250200719ee47987662ad56be216, type: 3}
+  sAnim: {fileID: 6638220746696478070, guid: 7634250200719ee47987662ad56be216, type: 3}
   speed: 2
   idleDuration: 1

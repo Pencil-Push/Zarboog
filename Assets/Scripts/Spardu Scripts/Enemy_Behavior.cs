@@ -9,7 +9,13 @@ public class Enemy_Behavior : MonoBehaviour
     [SerializeField] private float range;
     [SerializeField] private float colliderDistance;
     [SerializeField] private int damage;
+    //private float attackTimer;
     private float cooldownTimer = Mathf.Infinity;
+
+    // Alt way to shoot projectiles
+    [Header ("Ranged Attack")]
+    [SerializeField] private Transform emitter;
+    [SerializeField] private GameObject sProjectile;
 
     [Header ("Collider Parameters")]
     [SerializeField] private LayerMask groundLayer;
@@ -22,7 +28,7 @@ public class Enemy_Behavior : MonoBehaviour
     private Rigidbody2D sb;
     private Animator sAnim;
     private SpriteRenderer sparSprite;
-    private Health_Death playerHealth;
+    //private Health_Death playerHealth;
     private Enemy_Patrol enemyPatrol;
     
     // Start is called before the first frame update
@@ -37,11 +43,13 @@ public class Enemy_Behavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        cooldownTimer += Time.deltaTime;
+
         if (PlayerInSight())
         {
             if (cooldownTimer >= attackCooldown)
             {
-                cooldownTimer = 0;
+                RangedAttack();
                 sAnim.SetTrigger("smol");
             }
         }
@@ -50,20 +58,6 @@ public class Enemy_Behavior : MonoBehaviour
         {
             enemyPatrol.enabled = !PlayerInSight();
         }
-
-        //FacingRight();
-
-        //sb.velocity = transform.right * enemySpeed;
-        /*
-        if (facingRight)
-        {
-            sparSprite.flipX = false;
-        }
-        else
-        {
-            sparSprite.flipX = true;
-        }
-        */
 
         if (isGrounded())
         {
@@ -84,11 +78,7 @@ public class Enemy_Behavior : MonoBehaviour
     private bool PlayerInSight()
     {
         RaycastHit2D hit = Physics2D.BoxCast(boxCollider.bounds.center + transform.right * range * transform.localScale.x * colliderDistance, new Vector3(boxCollider.bounds.size.x * range, boxCollider.bounds.size.y, boxCollider.bounds.size.z), 0, Vector2.left, 0, playerLayer);
-        
-        /*
-        if (hit.collider != null)
-            playerHealth = hit.transform.GetComponent<Health_Death>();
-        */
+    
         return hit.collider != null;
     }
 
@@ -101,6 +91,7 @@ public class Enemy_Behavior : MonoBehaviour
     private void RangedAttack()
     {
         cooldownTimer = 0;
+        Instantiate(sProjectile, emitter.position, Quaternion.identity);
     }
 
     /*
@@ -109,20 +100,6 @@ public class Enemy_Behavior : MonoBehaviour
         if (PlayerInSight())
         {
             playerHealth.TakeDamage(damage);
-        }
-    }
-    */
-
-    /*
-    private void FacingRight()
-    {
-        if (Input.GetAxisRaw("Horizontal") > 0)
-        {
-            facingRight = true;
-        }
-        else if (Input.GetAxisRaw("Horizontal") < 0)
-        {
-            facingRight = false;
         }
     }
     */
