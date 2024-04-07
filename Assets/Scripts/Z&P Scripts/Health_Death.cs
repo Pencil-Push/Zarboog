@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using UnityEngine.UI;
 
 public class Health_Death : MonoBehaviour
 {
@@ -8,9 +9,14 @@ public class Health_Death : MonoBehaviour
     [SerializeField] private float startingHealth;
     public float currHealth { get; private set; }
 
+    [Header ("Lives Parameter")]
+    [SerializeField] private int maxLives;
+    [SerializeField] private int currLives;
+
     private void Start()
     {
         currHealth = startingHealth;
+        currLives = maxLives;
     }
 
     public void TakeDamage(float _damage)
@@ -19,11 +25,11 @@ public class Health_Death : MonoBehaviour
         
         if (currHealth > 0)
         {
-            //player hurt
+            //player hurt anim
         }
         else
         {
-            //player death
+            //player death anim
         }
     }
 }

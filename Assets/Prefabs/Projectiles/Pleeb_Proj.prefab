@@ -121,9 +121,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.010512352, y: 0.016163051}
+  m_Offset: {x: 0.0048322678, y: 0.016163051}
   serializedVersion: 2
-  m_Radius: 0.1333421
+  m_Radius: 0.49683666
 --- !u!114 &-7949427745645405921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,5 +137,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 20
-  damage: 10
+  damage: 5
   rb: {fileID: -2663571072958969595}

@@ -7,6 +7,7 @@ public class EnemyProjectile : MonoBehaviour
     private GameObject player;
     private Rigidbody2D rb;
     [SerializeField] private float force;
+    [SerializeField] private float damage;
 
     // Start is called before the first frame update
     void Start()
@@ -23,16 +24,15 @@ public class EnemyProjectile : MonoBehaviour
     {
         
     }
-    /*
-    void OnTriggerEnter2D(Collider2D other)
+
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if(collision.tag == "Player")
         {
-            //other.gameObject.GetComponent<Health_Death>().
+            collision.GetComponent<Health_Death>().TakeDamage(damage);
             Destroy(gameObject);
         }
     }
-    */
 
     void OnBecameInvisible()
     {
