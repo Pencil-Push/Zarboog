@@ -89,14 +89,4 @@ public class Enemy_Behavior : MonoBehaviour
         cooldownTimer = 0;
         Instantiate(sProjectile, emitter.position, Quaternion.identity);
     }
-
-    /*
-    private void DamagePlayer()
-    {
-        if (PlayerInSight())
-        {
-            playerHealth.TakeDamage(damage);
-        }
-    }
-    */
 }

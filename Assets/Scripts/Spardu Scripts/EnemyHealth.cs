@@ -18,6 +18,7 @@ public class EnemyHealth : MonoBehaviour
     {
         sAnim = GetComponent<Animator>();
         sSprite = GetComponent<SpriteRenderer>();
+        currHealth = startingHealth;
     }
 
     public void TakeDamage(float _damage)
