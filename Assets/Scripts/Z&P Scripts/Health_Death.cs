@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health_Death : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Health_Death : MonoBehaviour
     [SerializeField] private float startingHealth;
     public float currHealth { get; private set; }
     private bool dead;
+    private bool gameEnd;
     private Die_Respawn zRespawn;
 
     [Header ("iFrames")]
@@ -17,17 +19,18 @@ public class Health_Death : MonoBehaviour
     private SpriteRenderer zSprite;
 
     [Header ("Lives Parameter")]
-    [SerializeField] private int maxLives;
-    [SerializeField] private int currLives;
+    [SerializeField] private float maxLives;
+    public float currLives { get; private set; }
 
     [Header ("Player Components")]
     private Animator zAnim;
+    //[SerializeField] private Behavior[] components;
 
     private void Start()
     {
         zAnim = GetComponent<Animator>();
         zSprite = GetComponent<SpriteRenderer>();
-        //zRespawn = GameObject.Find("Player").GetComponent<Die_Respawn>();
+        zRespawn = GetComponent<Die_Respawn>();
         currHealth = startingHealth;
         currLives = maxLives;
     }
@@ -58,18 +61,46 @@ public class Health_Death : MonoBehaviour
                 if(GetComponent<PlayerMovement>() != null)
                     GetComponent<PlayerMovement>().enabled = false;
 
-                //zRespawn.Respawn();
-
                 dead = true;
+
+                PlayerDeath();
             }
         }
     }
-    /*
+
     public void AddHealth(float _value)
     {
         currHealth = Mathf.Clamp(currHealth + _value, 0, startingHealth);
     }
-    */
+
+
+    public void PlayerDeath()
+    {
+        currLives -= 1;
+        Respawn();
+        Debug.Log("minusLife");
+    }
+
+    public void Respawn()
+    {
+        dead = false;
+        AddHealth(startingHealth);
+        Application.LoadLevel(Application.loadedLevel);
+        StartCoroutine(Death());
+        StartCoroutine(Invul());
+
+        // Activates 
+        if(GetComponent<PlayerMovement>() != null)
+            GetComponent<PlayerMovement>().enabled = true;
+    }
+
+    private IEnumerator Death()
+    {
+       zAnim.SetTrigger("Die");
+       yield return new WaitForSeconds(1);
+       zAnim.ResetTrigger("Die");
+       zAnim.Play("Z_Idle");
+    }
 
     private IEnumerator Invul()
     {
