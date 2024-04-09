@@ -9,6 +9,7 @@ public class Health_Death : MonoBehaviour
     [SerializeField] private float startingHealth;
     public float currHealth { get; private set; }
     private bool dead;
+    private Die_Respawn zRespawn;
 
     [Header ("iFrames")]
     [SerializeField] private float invulDur;
@@ -26,6 +27,7 @@ public class Health_Death : MonoBehaviour
     {
         zAnim = GetComponent<Animator>();
         zSprite = GetComponent<SpriteRenderer>();
+        //zRespawn = GameObject.Find("Player").GetComponent<Die_Respawn>();
         currHealth = startingHealth;
         currLives = maxLives;
     }
@@ -55,6 +57,8 @@ public class Health_Death : MonoBehaviour
 
                 if(GetComponent<PlayerMovement>() != null)
                     GetComponent<PlayerMovement>().enabled = false;
+
+                //zRespawn.Respawn();
 
                 dead = true;
             }

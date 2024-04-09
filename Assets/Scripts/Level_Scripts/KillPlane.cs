@@ -9,11 +9,12 @@ public class KillPlane : MonoBehaviour
 
     // Start is called before the first frame update
     /*
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            player.transform.posiiton = respawnPoint.position;
+            //Scene currentScene = SceneManager
+            //other.transform.position = respawnPoint.position;
         }
     }
     */

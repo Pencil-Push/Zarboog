@@ -195,6 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51034cebfcc2ed7439d1b72f56d3f356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  respawnPoint: {x: -12.6, y: -1.73, z: 0}
 --- !u!50 &8427199712312711905
 Rigidbody2D:
   serializedVersion: 4

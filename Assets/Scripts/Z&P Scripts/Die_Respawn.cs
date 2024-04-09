@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Die_Respawn : MonoBehaviour
 {
-    // Start is called before the first frame update
-    
+    [SerializeField] private Vector3 respawnPoint;
+
+    public void Respawn()
+    {
+        transform.position = respawnPoint;
+    }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("DeathPlane"))
         {
-            Destroy(gameObject);
-            Level_Manage.instance.Respawn();
+            Respawn();
         }
     }
 
