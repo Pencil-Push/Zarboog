@@ -21,6 +21,7 @@ public class Health_Death : MonoBehaviour
     [Header ("Lives Parameter")]
     [SerializeField] private float maxLives;
     public float currLives { get; private set; }
+    
 
     [Header ("Player Components")]
     private Animator zAnim;
@@ -78,14 +79,17 @@ public class Health_Death : MonoBehaviour
     {
         currLives -= 1;
         Respawn();
-        Debug.Log("minusLife");
+        if (currLives <= 0)
+        {
+            SceneManager.LoadSceneAsync(3);
+        }
     }
 
     public void Respawn()
     {
         dead = false;
         AddHealth(startingHealth);
-        Application.LoadLevel(Application.loadedLevel);
+        //Application.LoadLevel(Application.loadedLevel);
         StartCoroutine(Death());
         StartCoroutine(Invul());
 
