@@ -18,6 +18,12 @@ public class ZP_Bullets : MonoBehaviour
             collision.GetComponent<EnemyHealth>().TakeDamage(damage);
             Destroy(gameObject);
         }
+
+        if(collision.tag == "Boss")
+        {
+            collision.GetComponent<Boss_Health>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
     }
 
     void OnBecameInvisible()

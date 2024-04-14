@@ -35,7 +35,7 @@ public class EnemyHealth : MonoBehaviour
             if(!dead)
             {
                 // sAnim.SetTrigger("Die");
-                // Destroy(gameObject);
+                Destroy(gameObject);
 
                 if(GetComponentInParent<Enemy_Patrol>() != null)
                     GetComponentInParent<Enemy_Patrol>().enabled = false;
