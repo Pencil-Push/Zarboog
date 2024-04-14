@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class Life_Counter : MonoBehaviour
 {
     //[SerializeField] private Health_Death playerLives;
-    //private GameManager theGM;
     public Text lifeCount;
     public int maxLives;
     public int livesCounter;
@@ -15,8 +14,6 @@ public class Life_Counter : MonoBehaviour
     void Start()
     {
         livesCounter = maxLives;
-
-        //theGM = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -26,7 +23,7 @@ public class Life_Counter : MonoBehaviour
 
         if (livesCounter < 1)
         {
-            //theGM.GameOver();
+
         }
     }
 
