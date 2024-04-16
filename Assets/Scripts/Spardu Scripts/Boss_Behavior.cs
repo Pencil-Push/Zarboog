@@ -27,4 +27,10 @@ public class Boss_Behavior : MonoBehaviour
            isFlipped = true;
        }
     }
+    /*
+    public IEnumerator bossInactive()
+    {
+        yield return new WaitForSecondsRealtime(120f);
+    }
+    */
 }
