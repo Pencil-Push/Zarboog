@@ -35,7 +35,7 @@ public class Health_Death : MonoBehaviour
         currHealth = startingHealth;
         currLives = maxLives;
     }
-
+    /*
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))
@@ -43,7 +43,7 @@ public class Health_Death : MonoBehaviour
             TakeDamage(3);
         }
     }
-
+    */
     public void TakeDamage(float _damage)
     {
         currHealth = Mathf.Clamp(currHealth - _damage, 0, startingHealth);
