@@ -89,7 +89,6 @@ public class Health_Death : MonoBehaviour
     {
         dead = false;
         AddHealth(startingHealth);
-        //Application.LoadLevel(Application.loadedLevel);
         StartCoroutine(Death());
         StartCoroutine(Invul());
 

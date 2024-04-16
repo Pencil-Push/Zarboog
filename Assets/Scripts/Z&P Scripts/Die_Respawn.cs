@@ -13,12 +13,6 @@ public class Die_Respawn : MonoBehaviour
         playerHealth = GetComponent<Health_Death>();
         playerDeath = GetComponent<Health_Death>();
     }
-
-    public void Respawn()
-    {
-        transform.position = respawnPoint;
-        playerHealth.Respawn();
-    }
     
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -26,6 +20,7 @@ public class Die_Respawn : MonoBehaviour
         {
             playerDeath.PlayerDeath();
             playerHealth.Respawn();
+            transform.position = respawnPoint;
         }
     }
 
