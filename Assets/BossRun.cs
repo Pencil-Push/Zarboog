@@ -7,6 +7,7 @@ public class BossRun : StateMachineBehaviour
     [Header ("Boss Parameters")]
     [SerializeField] private float speed;
     [SerializeField] private float attackRange;
+    //private bool bossInactive = false;
     
     [Header ("Boss Components")]
     Transform player;

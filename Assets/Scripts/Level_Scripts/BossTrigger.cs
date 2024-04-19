@@ -4,21 +4,12 @@ using UnityEngine;
 
 public class BossTrigger : MonoBehaviour
 {
-    public Transform player;
-    public GameObject bossEntrance;
-    /*
-    private void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        GetComponent<BossRun>().enabled = false;
-    }
-    
-    // Start is called before the first frame update
-    private void OnTriggerEnter2D(Collider col)
-    {
-        if(other.gameObject.CompareTag("Player"))
+        if(collision.tag == "Player")
         {
-
+            collision.GetComponent<BossRun>();
+            Debug.Log("Triggered");
         }
     }
-    */
 }

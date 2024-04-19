@@ -144,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Dash Shit
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && isGrounded())
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
             zAnimator.SetTrigger("Dash");
@@ -208,7 +208,4 @@ public class PlayerMovement : MonoBehaviour
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
         return raycastHit.collider != null;
     }
-    
-    //
-
 }
