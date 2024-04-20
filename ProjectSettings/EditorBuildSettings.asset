@@ -12,9 +12,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Z_Tutorial.unity
     guid: 012767ffc21816d4caa713a7d6bae9aa
   - enabled: 1
-    path: Assets/Scenes/Z_Bosses.unity
-    guid: a34b7c1c76ac3b448a9370906d488d93
+    path: Assets/Scenes/Z_BArena.unity
+    guid: 82d3732245c69314f8550c80d727b058
   - enabled: 1
     path: Assets/Scenes/Z_GameEnd.unity
     guid: 205bf35ed88e31943941f87d3abb19dc
+  - enabled: 1
+    path: Assets/Scenes/Z_Quit.unity
+    guid: f7321658789ceb544b2a945036aa2872
   m_configObjects: {}

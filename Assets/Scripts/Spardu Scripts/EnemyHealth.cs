@@ -27,7 +27,7 @@ public class EnemyHealth : MonoBehaviour
         
         if (currHealth > 0)
         {
-          // sAnim.SetTrigger("Hurt");
+           sAnim.SetTrigger("Hurt");
 
         }
         else
