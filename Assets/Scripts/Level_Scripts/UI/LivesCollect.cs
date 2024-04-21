@@ -5,14 +5,14 @@ using UnityEngine;
 public class LivesCollect : MonoBehaviour
 {
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private float lifeValue;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   private void OnTriggerEnter2D(Collider2D col)
+   {
+        if(col.tag == "Player")
+        {
+            col.GetComponent<Health_Death>().AddLife(lifeValue);
+            gameObject.SetActive(false);
+        }
+   }
 }

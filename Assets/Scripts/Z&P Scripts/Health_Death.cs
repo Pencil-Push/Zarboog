@@ -85,6 +85,12 @@ public class Health_Death : MonoBehaviour
         }
     }
 
+    public void AddLife(float _value)
+    {
+        currLives = Mathf.Clamp(currLives + _value, 0, maxLives);
+        Debug.Log("1UP!");
+    }
+
     public void Respawn()
     {
         dead = false;
