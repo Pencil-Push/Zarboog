@@ -19,6 +19,12 @@ public class ZP_Bullets : MonoBehaviour
             Destroy(gameObject);
         }
 
+        if(collision.tag == "Ship")
+        {
+            collision.GetComponent<Ship_Health>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
         if(collision.tag == "Boss")
         {
             collision.GetComponent<Boss_Health>().TakeDamage(damage);

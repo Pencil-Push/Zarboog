@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4484728837264985002}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Emitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 8204497132642010214}
   - component: {fileID: 6638220746696478070}
   - component: {fileID: 7408771279621656495}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Spardu
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -136,7 +136,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 50
   m_Material: {fileID: 6200000, guid: 3eab46838f349554faa80ae1bca12978, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
@@ -183,7 +183,7 @@ MonoBehaviour:
   attackCooldown: 1
   range: 7.07
   colliderDistance: 0.74
-  damage: 2
+  damage: 3
   emitter: {fileID: 4484728837264985002}
   sProjectile: {fileID: 7873300723353687422, guid: 100d416835b0b4c4a89c424a6d0f50d4, type: 3}
   groundLayer:
@@ -226,4 +226,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d74368898b257842b5d13527d407e22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 15
+  startingHealth: 20
