@@ -11,7 +11,7 @@ public class LivesCollect : MonoBehaviour
    {
         if(col.tag == "Player")
         {
-            col.GetComponent<Health_Death>().AddLife(lifeValue);
+            col.GetComponent<Health_Death>().AddLife();
             gameObject.SetActive(false);
         }
    }

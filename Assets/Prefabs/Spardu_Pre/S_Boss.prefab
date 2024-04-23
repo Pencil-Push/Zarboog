@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 5
-  attackRange: 5
+  attackRange: 6
   attackOffset: {x: 0, y: 0, z: 0}
   attackMask:
     serializedVersion: 2
@@ -203,3 +203,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingHealth: 125
+  numOfFlash: 1
+  flashDur: 0.2

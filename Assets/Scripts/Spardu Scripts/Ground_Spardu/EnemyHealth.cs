@@ -8,6 +8,8 @@ public class EnemyHealth : MonoBehaviour
     [Header ("Health Parameter")]
     [SerializeField] private float startingHealth;
     public float currHealth { get; private set; }
+    [SerializeField] private int numOfFlash;
+    [SerializeField] private float flashDur;
     private bool dead;
 
     [Header ("Enemy Components")]
@@ -28,6 +30,7 @@ public class EnemyHealth : MonoBehaviour
         if (currHealth > 0)
         {
            sAnim.SetTrigger("Hurt");
+           StartCoroutine(damageFlash());
 
         }
         else
@@ -57,6 +60,17 @@ public class EnemyHealth : MonoBehaviour
                 
                 if(GetComponent<Enemy_Behavior>() != null)
                     GetComponent<Enemy_Behavior>().enabled = false;
+        }
+    }
+
+    private IEnumerator damageFlash()
+    {
+        for(int i = 0; i < numOfFlash; i++)
+        {
+            sSprite.color = new(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(flashDur);
+            sSprite.color = Color.white;
+            yield return new WaitForSeconds(flashDur);
         }
     }
 }

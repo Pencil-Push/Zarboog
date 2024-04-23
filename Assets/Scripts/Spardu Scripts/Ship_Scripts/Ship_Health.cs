@@ -8,16 +8,18 @@ public class Ship_Health : MonoBehaviour
     [Header ("Health Parameter")]
     [SerializeField] private float startingHealth;
     public float currHealth { get; private set; }
+    [SerializeField] private int numOfFlash;
+    [SerializeField] private float flashDur;
     private bool dead;
 
-    // [Header ("Enemy Components")]
+    [Header ("Enemy Components")]
     //private Animator sAnim;
-    //private SpriteRenderer sSprite;
+    private SpriteRenderer sHSprite;
 
     private void Start()
     {
         //sAnim = GetComponent<Animator>();
-        //sSprite = GetComponent<SpriteRenderer>();
+        sHSprite = GetComponent<SpriteRenderer>();
         currHealth = startingHealth;
     }
 
@@ -28,7 +30,7 @@ public class Ship_Health : MonoBehaviour
         if (currHealth > 0)
         {
            //sAnim.SetTrigger("Hurt");
-
+            StartCoroutine(damageFlash());
         }
         else
         {
@@ -37,6 +39,17 @@ public class Ship_Health : MonoBehaviour
                 // sAnim.SetTrigger("Die");
                 Destroy(gameObject);
             }
+        }
+    }
+
+    private IEnumerator damageFlash()
+    {
+        for(int i = 0; i < numOfFlash; i++)
+        {
+            sHSprite.color = new(1, 0, 0, 0.5f);
+            yield return new WaitForSeconds(flashDur);
+            sHSprite.color = Color.white;
+            yield return new WaitForSeconds(flashDur);
         }
     }
 }

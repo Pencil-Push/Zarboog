@@ -5,35 +5,21 @@ using UnityEngine.UI;
 
 public class Life_Counter : MonoBehaviour
 {
-    //[SerializeField] private Health_Death playerLives;
-    public Text lifeCount;
-    public int maxLives;
-    public int livesCounter;
+    [SerializeField] private Health_Death playerLives;
+    [SerializeField] private Text lifeCount;
 
     // Start is called before the first frame update
     void Start()
     {
-        livesCounter = maxLives;
+        playerLives = GetComponent<Health_Death>();
+        lifeCount = GetComponent<Text>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        lifeCount.text = "x " + livesCounter;
+        lifeCount.text = "x " + playerLives.currLives;
 
-        if (livesCounter < 1)
-        {
 
-        }
-    }
-
-    public void TakeLife()
-    {
-        livesCounter--;
-    }
-
-    public void AddLife()
-    {
-        livesCounter++;
     }
 }

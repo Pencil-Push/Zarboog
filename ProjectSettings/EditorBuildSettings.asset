@@ -14,13 +14,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Z_Flying.unity
     guid: 3e6348a4e2fdf3542b5d514196c42963
-  - enabled: 0
-    path: Assets/Scenes/Z_BArena.unity
-    guid: 82d3732245c69314f8550c80d727b058
   - enabled: 1
     path: Assets/Scenes/Z_GameEnd.unity
     guid: 205bf35ed88e31943941f87d3abb19dc
   - enabled: 1
     path: Assets/Scenes/Z_Quit.unity
     guid: f7321658789ceb544b2a945036aa2872
+  - enabled: 1
+    path: Assets/Scenes/Z_EndDemo.unity
+    guid: ed6a154edf5504345aba56677c1f7a40
   m_configObjects: {}
