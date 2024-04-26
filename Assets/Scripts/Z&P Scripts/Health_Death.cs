@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class Health_Death : MonoBehaviour
@@ -22,9 +21,8 @@ public class Health_Death : MonoBehaviour
     [Header ("Lives Parameter")]
     [SerializeField] private float maxLives;
     public float currLives { get; private set; }
-    //public TMP_Text lifeText;
+    public Text lifeText;
     
-
     [Header ("Player Components")]
     private Animator zAnim;
 
@@ -35,20 +33,17 @@ public class Health_Death : MonoBehaviour
         zRespawn = GetComponent<Die_Respawn>();
         currHealth = startingHealth;
         currLives = maxLives;
-        //lifeText = GetComponent<TMP_Text>(); 
-    
+        lifeText.text = "x " + currLives.ToString();
     }
-    /*
+    
     private void Update()
     {
-        //lifeText.text = "x " + currLives.ToString();
-
         if(Input.GetKeyDown(KeyCode.E))
         {
             TakeDamage(20);
         }
     }
-    */
+    
     public void TakeDamage(float _damage)
     {
         currHealth = Mathf.Clamp(currHealth - _damage, 0, startingHealth);
@@ -84,6 +79,7 @@ public class Health_Death : MonoBehaviour
     {
         currLives -= 1;
         Respawn();
+        lifeText.text = "x " + currLives.ToString();
         if (currLives <= 0)
         {
             SceneManager.LoadSceneAsync(3);
@@ -93,7 +89,7 @@ public class Health_Death : MonoBehaviour
     public void AddLife()
     {
         currLives++;
-        Debug.Log("1UP!");
+        lifeText.text = "x " + currLives.ToString();
     }
 
     public void Respawn()
