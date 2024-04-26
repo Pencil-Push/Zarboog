@@ -9,6 +9,7 @@ public class Boss_Damage : MonoBehaviour
     [SerializeField] private float attackRange;
     public Vector3 attackOffset;
     public LayerMask attackMask;
+    [SerializeField] private AudioClip hitAClip;
 
     //[SerializeField] private int enragedAttackDamage;
 
@@ -23,6 +24,7 @@ public class Boss_Damage : MonoBehaviour
         if(colInfo != null)
         {
             colInfo.GetComponent<Health_Death>().TakeDamage(attackDamage);
+            AltAudioM.instance.PlaySFXClip(hitAClip, transform, 0.5f);
         }
     }
 }

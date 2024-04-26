@@ -11,6 +11,7 @@ public class Boss_Health : MonoBehaviour
     [SerializeField] private int numOfFlash;
     [SerializeField] private float flashDur;
     public float currHealth { get; private set; }
+    [SerializeField] private AudioClip damageAClip;
     private bool dead;
 
     [Header ("Enemy Components")]
@@ -30,7 +31,7 @@ public class Boss_Health : MonoBehaviour
         
         if (currHealth > 0)
         {
-          // sAnim.SetTrigger("Hurt");
+            AltAudioM.instance.PlaySFXClip(damageAClip, transform, 1f);
             StartCoroutine(damageFlash());
         }
         else

@@ -10,6 +10,8 @@ public class Ship_Health : MonoBehaviour
     public float currHealth { get; private set; }
     [SerializeField] private int numOfFlash;
     [SerializeField] private float flashDur;
+    [SerializeField] private AudioClip damageAClip;
+    [SerializeField] private AudioClip deathAClip;
     private bool dead;
 
     [Header ("Enemy Components")]
@@ -29,14 +31,14 @@ public class Ship_Health : MonoBehaviour
         
         if (currHealth > 0)
         {
-           //sAnim.SetTrigger("Hurt");
+            AltAudioM.instance.PlaySFXClip(damageAClip, transform, 1f);
             StartCoroutine(damageFlash());
         }
         else
         {
             if(!dead)
             {
-                // sAnim.SetTrigger("Die");
+                AltAudioM.instance.PlaySFXClip(deathAClip, transform, 1f);
                 Destroy(gameObject);
             }
         }

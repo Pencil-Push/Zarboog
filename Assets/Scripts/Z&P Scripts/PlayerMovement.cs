@@ -39,7 +39,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float dashPower;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float dashCooldown = 1f;
-    
+
+    [Header ("Audio Clips")]
+    [SerializeField] private AudioClip jumpAClip;
+    [SerializeField] private AudioClip dashAClip;
 
     void Start()
     {
@@ -90,6 +93,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && isGrounded())
         {
             Jump();
+            AltAudioM.instance.PlaySFXClip(jumpAClip, transform, 1f);
             zAnimator.ResetTrigger("Jump");
             zAnimator.SetTrigger("Jump");
         }
@@ -126,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.X) && wallSliding == true)
         {
             wallJump = true;
+            AltAudioM.instance.PlaySFXClip(jumpAClip, transform, 1f);
             Invoke("SetWallJumpFalse", wallJumpTime);
         }
 
@@ -148,6 +153,7 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(Dash());
             zAnimator.SetTrigger("Dash");
+            AltAudioM.instance.PlaySFXClip(dashAClip, transform, 1f);
         }
         else
         {

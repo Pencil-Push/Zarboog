@@ -26,6 +26,10 @@ public class Health_Death : MonoBehaviour
     [Header ("Player Components")]
     private Animator zAnim;
 
+    [Header ("Audio Clips")]
+    [SerializeField] private AudioClip damageAClip;
+    [SerializeField] private AudioClip deathAClip;
+
     private void Start()
     {
         zAnim = GetComponent<Animator>();
@@ -35,7 +39,7 @@ public class Health_Death : MonoBehaviour
         currLives = maxLives;
         lifeText.text = "x " + currLives.ToString();
     }
-    
+    /*
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))
@@ -43,7 +47,7 @@ public class Health_Death : MonoBehaviour
             TakeDamage(20);
         }
     }
-    
+    */
     public void TakeDamage(float _damage)
     {
         currHealth = Mathf.Clamp(currHealth - _damage, 0, startingHealth);
@@ -51,6 +55,7 @@ public class Health_Death : MonoBehaviour
         if (currHealth > 0)
         {
             zAnim.SetTrigger("Hurt");
+            AltAudioM.instance.PlaySFXClip(damageAClip, transform, 1f);
             StartCoroutine(Invul());
         }
         else
@@ -65,6 +70,7 @@ public class Health_Death : MonoBehaviour
                 dead = true;
 
                 PlayerDeath();
+                AltAudioM.instance.PlaySFXClip(deathAClip, transform, 1f);
             }
         }
     }

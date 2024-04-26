@@ -15,6 +15,7 @@ public class Enemy_Behavior : MonoBehaviour
     [Header ("Ranged Attack")]
     [SerializeField] private Transform emitter;
     [SerializeField] private GameObject sProjectile;
+    [SerializeField] private AudioClip shootAClip;
 
     [Header ("Collider Parameters")]
     [SerializeField] private LayerMask groundLayer;
@@ -47,6 +48,7 @@ public class Enemy_Behavior : MonoBehaviour
             {
                 RangedAttack();
                 sAnim.SetTrigger("smol");
+                AltAudioM.instance.PlaySFXClip(shootAClip, transform, 0.5f);
             }
         }
 

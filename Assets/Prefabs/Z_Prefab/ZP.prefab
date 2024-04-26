@@ -153,6 +153,8 @@ MonoBehaviour:
   dashPower: 5
   dashTime: 0.2
   dashCooldown: 1
+  jumpAClip: {fileID: 8300000, guid: e666a7d194f10b1478e0f4f93a5f9e62, type: 3}
+  dashAClip: {fileID: 8300000, guid: e9b791a1a14415340b8349eb80ac669e, type: 3}
 --- !u!114 &8525128008850918533
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,6 +185,9 @@ MonoBehaviour:
   invulDur: 2
   flashCount: 3
   maxLives: 3
+  lifeText: {fileID: 0}
+  damageAClip: {fileID: 8300000, guid: ba7fc498422af67488168d2d8cf0cca4, type: 3}
+  deathAClip: {fileID: 8300000, guid: acdd6ef249034fe438a9bd5b9cdbecb2, type: 3}
 --- !u!114 &1373993749830350326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +201,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnPoint: {x: -12.6, y: -1.73, z: 0}
+  deathAClip: {fileID: 8300000, guid: acdd6ef249034fe438a9bd5b9cdbecb2, type: 3}
 --- !u!114 &4981851242165175548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -433,6 +439,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 8869580326173842920, guid: ee438cc23028db944959bf8a568fe665, type: 3}
   spriteObj: {fileID: 8427199712312711910}
   bulletSpeed: 20
+  shootAClip: {fileID: 8300000, guid: f3af69df64887d848a1a3f05127bcafe, type: 3}
 --- !u!212 &8427199713409135067
 SpriteRenderer:
   m_ObjectHideFlags: 0

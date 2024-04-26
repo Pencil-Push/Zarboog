@@ -186,6 +186,7 @@ MonoBehaviour:
   damage: 3
   emitter: {fileID: 4484728837264985002}
   sProjectile: {fileID: 7873300723353687422, guid: 100d416835b0b4c4a89c424a6d0f50d4, type: 3}
+  shootAClip: {fileID: 8300000, guid: b6caa876486d42549ad0699bcc065ca4, type: 3}
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -229,3 +230,5 @@ MonoBehaviour:
   startingHealth: 20
   numOfFlash: 1
   flashDur: 0.2
+  damageAClip: {fileID: 8300000, guid: 4c937d71412110d4284f7d906a3e5d64, type: 3}
+  deathAClip: {fileID: 8300000, guid: 8ce670df4e32f544886b25572b3995e9, type: 3}

@@ -15,6 +15,7 @@ public class Ship_Behavior : MonoBehaviour
     [Header ("Ranged Attack")]
     [SerializeField] private Transform emitter;
     [SerializeField] private GameObject sProjectile;
+    [SerializeField] private AudioClip shootAClip;
 
     [Header ("Attack Parameters")]
     [SerializeField] private float attackCooldown;
@@ -60,6 +61,7 @@ public class Ship_Behavior : MonoBehaviour
         if(cooldownTimer >= attackCooldown)
             {
                 RangedAttack();
+                AltAudioM.instance.PlaySFXClip(shootAClip, transform, 0.5f);
             }
     }
 

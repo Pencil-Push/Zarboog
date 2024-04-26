@@ -10,6 +10,8 @@ public class EnemyHealth : MonoBehaviour
     public float currHealth { get; private set; }
     [SerializeField] private int numOfFlash;
     [SerializeField] private float flashDur;
+    [SerializeField] private AudioClip damageAClip;
+    [SerializeField] private AudioClip deathAClip;
     private bool dead;
 
     [Header ("Enemy Components")]
@@ -29,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
         
         if (currHealth > 0)
         {
+           AltAudioM.instance.PlaySFXClip(damageAClip, transform, 1f);
            sAnim.SetTrigger("Hurt");
            StartCoroutine(damageFlash());
 
@@ -38,6 +41,7 @@ public class EnemyHealth : MonoBehaviour
             if(!dead)
             {
                 // sAnim.SetTrigger("Die");
+                AltAudioM.instance.PlaySFXClip(deathAClip, transform, 1f);
                 Destroy(gameObject);
 
                 if(GetComponentInParent<Enemy_Patrol>() != null)

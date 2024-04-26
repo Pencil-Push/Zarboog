@@ -190,6 +190,7 @@ MonoBehaviour:
   attackMask:
     serializedVersion: 2
     m_Bits: 128
+  hitAClip: {fileID: 8300000, guid: bb28eb94eae329a4e8dd1a84910e2272, type: 3}
 --- !u!114 &7930631121943477899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,3 +206,4 @@ MonoBehaviour:
   startingHealth: 125
   numOfFlash: 1
   flashDur: 0.2
+  damageAClip: {fileID: 8300000, guid: 4c937d71412110d4284f7d906a3e5d64, type: 3}
