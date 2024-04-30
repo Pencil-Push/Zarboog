@@ -40,15 +40,17 @@ public class EnemyHealth : MonoBehaviour
         {
             if(!dead)
             {
-                sAnim.SetTrigger("Dead");
+               // sAnim.SetTrigger("Dead");
                 AltAudioM.instance.PlaySFXClip(deathAClip, transform, 1f);
-                Destroy(gameObject);
+                //Destroy(gameObject);
 
                 if(GetComponentInParent<Enemy_Patrol>() != null)
                     GetComponentInParent<Enemy_Patrol>().enabled = false;
                 
                 if(GetComponent<Enemy_Behavior>() != null)
                     GetComponent<Enemy_Behavior>().enabled = false;
+
+                StartCoroutine(enemyDead());
             }
         }
     }
@@ -76,5 +78,12 @@ public class EnemyHealth : MonoBehaviour
             sSprite.color = Color.white;
             yield return new WaitForSeconds(flashDur);
         }
+    }
+
+    private IEnumerator enemyDead()
+    {
+        sAnim.SetTrigger("Dead");
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject, 0.5f);
     }
 }

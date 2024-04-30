@@ -125,3 +125,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeValue: 1
+  lifeAClip: {fileID: 8300000, guid: 90aac2d653722ee4282a2f945669dd06, type: 3}

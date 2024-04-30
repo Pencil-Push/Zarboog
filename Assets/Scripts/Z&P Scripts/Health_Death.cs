@@ -70,7 +70,7 @@ public class Health_Death : MonoBehaviour
                 dead = true;
 
                 PlayerDeath();
-                AltAudioM.instance.PlaySFXClip(deathAClip, transform, 1f);
+                AltAudioM.instance.PlaySFXClip(deathAClip, transform, 0.5f);
             }
         }
     }

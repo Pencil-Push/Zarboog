@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthValue: 5
+  healthAClip: {fileID: 8300000, guid: 1d60af7f9a03010489251c79e865f1e4, type: 3}
 --- !u!61 &59631564089501982
 BoxCollider2D:
   m_ObjectHideFlags: 0

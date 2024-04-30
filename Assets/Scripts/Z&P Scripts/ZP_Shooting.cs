@@ -66,7 +66,7 @@ public class ZP_Shooting : MonoBehaviour
     {
         // shooting logic firePoint.rotation,
         GameObject projectile = Instantiate(bulletPrefab, firePoint.position, Quaternion.identity);
-        AltAudioM.instance.PlaySFXClip(shootAClip, transform, 0.5f);
+        AltAudioM.instance.PlaySFXClip(shootAClip, transform, 0.3f);
         
         float bulletAngle = ang;
         Vector2 bulletDirection = new Vector2(Mathf.Cos(Mathf.Deg2Rad * bulletAngle), Mathf.Sin(Mathf.Deg2Rad * bulletAngle));

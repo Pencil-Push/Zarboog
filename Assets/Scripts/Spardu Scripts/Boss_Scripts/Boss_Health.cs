@@ -38,10 +38,10 @@ public class Boss_Health : MonoBehaviour
         {
             if(!dead)
             {
-                //StartCoroutine(Ending());
-                // sAnim.SetTrigger("Die");
-                Destroy(gameObject);
-                SceneManager.LoadSceneAsync(5);
+                StartCoroutine(Ending());
+                
+                //Destroy(gameObject);
+                //SceneManager.LoadSceneAsync(5);
             }
         }
     }
@@ -57,13 +57,19 @@ public class Boss_Health : MonoBehaviour
         }
     }
 
-    /*
+    
     private IEnumerator Ending()
     {
-        Debug.Log("Starting" + Time.time);
-        yield return new WaitForSecondsRealtime(2.0f);
-        SceneManager.LoadSceneAsync(5);
-        Debug.Log("Done" + Time.time);
+        bAnim.SetTrigger("Dead");
+        yield return new WaitForSeconds(2.0f);
+        //Destroy(gameObject, 0.5f);
+        //yield return new WaitForSeconds(1.0f);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(5);
+        
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
     }
-    */
+    
 }
