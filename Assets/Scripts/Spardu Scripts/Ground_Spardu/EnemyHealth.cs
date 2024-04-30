@@ -40,7 +40,7 @@ public class EnemyHealth : MonoBehaviour
         {
             if(!dead)
             {
-                // sAnim.SetTrigger("Die");
+                sAnim.SetTrigger("Dead");
                 AltAudioM.instance.PlaySFXClip(deathAClip, transform, 1f);
                 Destroy(gameObject);
 
