@@ -15,12 +15,12 @@ public class Ship_Health : MonoBehaviour
     private bool dead;
 
     [Header ("Enemy Components")]
-    //private Animator sAnim;
+    private Animator sHAnim;
     private SpriteRenderer sHSprite;
 
     private void Start()
     {
-        //sAnim = GetComponent<Animator>();
+        sHAnim = GetComponent<Animator>();
         sHSprite = GetComponent<SpriteRenderer>();
         currHealth = startingHealth;
     }
@@ -38,8 +38,11 @@ public class Ship_Health : MonoBehaviour
         {
             if(!dead)
             {
+                if(GetComponent<Ship_Behavior>() != null)
+                    GetComponent<Ship_Behavior>().enabled = false;
+
                 AltAudioM.instance.PlaySFXClip(deathAClip, transform, 1f);
-                Destroy(gameObject);
+                StartCoroutine(shipDead());
             }
         }
     }
@@ -53,5 +56,12 @@ public class Ship_Health : MonoBehaviour
             sHSprite.color = Color.white;
             yield return new WaitForSeconds(flashDur);
         }
+    }
+
+    private IEnumerator shipDead()
+    {
+        sHAnim.SetTrigger("Die");
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject, 0.1f);
     }
 }

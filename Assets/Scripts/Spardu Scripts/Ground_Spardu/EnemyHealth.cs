@@ -83,7 +83,7 @@ public class EnemyHealth : MonoBehaviour
     private IEnumerator enemyDead()
     {
         sAnim.SetTrigger("Dead");
-        yield return new WaitForSeconds(1f);
-        Destroy(gameObject, 0.5f);
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject, 0.1f);
     }
 }

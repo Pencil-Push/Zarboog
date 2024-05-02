@@ -113,7 +113,7 @@ MonoBehaviour:
   rightEdge: {fileID: 4338158711705713038}
   enemy: {fileID: 4338158712378868532}
   sAnim: {fileID: 1294701778041145895}
-  speed: 2
+  speed: 3
   idleDuration: 1
 --- !u!1001 &5613744569709315921
 PrefabInstance:

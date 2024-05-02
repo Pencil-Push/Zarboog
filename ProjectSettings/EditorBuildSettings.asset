@@ -12,8 +12,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Z_Tutorial.unity
     guid: 012767ffc21816d4caa713a7d6bae9aa
   - enabled: 1
-    path: Assets/Scenes/Z_Remaining.unity
-    guid: 3812e527c42832c46bb89054a36cbea6
+    path: Assets/Scenes/Z_MoreLevel.unity
+    guid: 6903c12aad11db247991d77fa640c747
   - enabled: 1
     path: Assets/Scenes/Z_GameEnd.unity
     guid: 205bf35ed88e31943941f87d3abb19dc
