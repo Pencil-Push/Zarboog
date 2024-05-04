@@ -22,6 +22,7 @@ public class Health_Death : MonoBehaviour
     [SerializeField] private float maxLives;
     public float currLives { get; private set; }
     public Text lifeText;
+    [SerializeField] private Vector3 respawnPoint;
     
     [Header ("Player Components")]
     private Animator zAnim;
@@ -29,6 +30,7 @@ public class Health_Death : MonoBehaviour
     [Header ("Audio Clips")]
     [SerializeField] private AudioClip damageAClip;
     [SerializeField] private AudioClip deathAClip;
+    [SerializeField] private AudioClip checkAClip;
 
     private void Start()
     {
@@ -112,6 +114,7 @@ public class Health_Death : MonoBehaviour
 
     private IEnumerator Death()
     {
+       transform.position = respawnPoint;
        zAnim.SetTrigger("Die");
        yield return new WaitForSeconds(1);
        zAnim.ResetTrigger("Die");
@@ -129,5 +132,16 @@ public class Health_Death : MonoBehaviour
             yield return new WaitForSeconds(invulDur / (flashCount * 2));
         }
         Physics2D.IgnoreLayerCollision(7, 8, false);
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Checkpoint"))
+        {
+            respawnPoint = transform.position;
+            AltAudioM.instance.PlaySFXClip(checkAClip, transform, 1f);
+            col.GetComponent<Collider2D>().enabled = false;
+            col.GetComponent<Animator>().SetTrigger("Active");
+        }
     }
 }

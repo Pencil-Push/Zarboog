@@ -186,8 +186,10 @@ MonoBehaviour:
   flashCount: 3
   maxLives: 3
   lifeText: {fileID: 0}
+  respawnPoint: {x: -12.6, y: -1.73, z: 0}
   damageAClip: {fileID: 8300000, guid: ba7fc498422af67488168d2d8cf0cca4, type: 3}
   deathAClip: {fileID: 8300000, guid: acdd6ef249034fe438a9bd5b9cdbecb2, type: 3}
+  checkAClip: {fileID: 8300000, guid: 56463fa4716319e4cbef7ff591389c4f, type: 3}
 --- !u!114 &1373993749830350326
 MonoBehaviour:
   m_ObjectHideFlags: 0
