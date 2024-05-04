@@ -9,6 +9,7 @@ TagManager:
   - DeathPlane
   - Boss
   - Ship
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

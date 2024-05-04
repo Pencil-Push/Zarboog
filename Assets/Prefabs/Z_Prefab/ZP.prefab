@@ -202,6 +202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   respawnPoint: {x: -12.6, y: -1.73, z: 0}
   deathAClip: {fileID: 8300000, guid: acdd6ef249034fe438a9bd5b9cdbecb2, type: 3}
+  checkAClip: {fileID: 8300000, guid: 56463fa4716319e4cbef7ff591389c4f, type: 3}
 --- !u!114 &4981851242165175548
 MonoBehaviour:
   m_ObjectHideFlags: 0

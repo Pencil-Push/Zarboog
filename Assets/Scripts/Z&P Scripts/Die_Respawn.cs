@@ -8,6 +8,7 @@ public class Die_Respawn : MonoBehaviour
     private Health_Death playerHealth;
     private Health_Death playerDeath;
     [SerializeField] private AudioClip deathAClip;
+    [SerializeField] private AudioClip checkAClip;
 
     private void Start()
     {
@@ -26,4 +27,14 @@ public class Die_Respawn : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Checkpoint"))
+        {
+            respawnPoint = transform.position;
+            AltAudioM.instance.PlaySFXClip(checkAClip, transform, 1f);
+            col.GetComponent<Collider2D>().enabled = false;
+            col.GetComponent<Animator>().SetTrigger("Active");
+        }
+    }
 }
