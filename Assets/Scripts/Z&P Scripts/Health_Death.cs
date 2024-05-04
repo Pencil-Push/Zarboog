@@ -41,7 +41,7 @@ public class Health_Death : MonoBehaviour
         currLives = maxLives;
         lifeText.text = "x " + currLives.ToString();
     }
-    
+    /*
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.E))
@@ -49,7 +49,7 @@ public class Health_Death : MonoBehaviour
             TakeDamage(20);
         }
     }
-    
+    */
     public void TakeDamage(float _damage)
     {
         currHealth = Mathf.Clamp(currHealth - _damage, 0, startingHealth);
@@ -144,4 +144,14 @@ public class Health_Death : MonoBehaviour
             col.GetComponent<Animator>().SetTrigger("Active");
         }
     }
+    /*
+    // Collision with enemies take damage
+    private void OnCollisionEnter2D(Collision colli)
+    {
+        if(colli.tag == "Enemy")
+        {
+            TakeDamage();
+        }
+    }
+    */
 }
